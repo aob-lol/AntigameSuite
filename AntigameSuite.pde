@@ -25,15 +25,17 @@ void captureEvent(Capture c) {
 
 
 void setup() {
-  fullScreen(P2D);
-  //size(960, 540, P2D);
+  //fullScreen(P2D);
+  size(960, 540, P2D);
 
-  // Hide mouse
-  noCursor();
 
   // Controller Init
   control = ControlIO.getInstance(this);
   controller = new Controller();
+
+
+  // Hide mouse
+  noCursor();
 
 
   // Set up camera
@@ -44,7 +46,7 @@ void setup() {
   cs = new ContextSwitch();
 
   // Add antigames.
-  cs.addContext( new AntigameCubeRave() );
+  //cs.addContext( new AntigameCubeRave() );
   cs.addContext( new AntigameType2D() );
   cs.addContext( new AntigameGradientPlacer() );
   cs.addContext( new AntigamePortland() );

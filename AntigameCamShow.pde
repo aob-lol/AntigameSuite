@@ -1,7 +1,5 @@
 class AntigameCamShow extends Context {
 
-  // Adapted from https://github.com/kimasendorf/ASDFPixelSort
-
   int mode = 0;
   PGraphics pg; // All graphics drawn to this buffer.
   String name = "AntigameCamShow";  // Drawn onscreen, make it count!

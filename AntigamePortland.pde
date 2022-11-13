@@ -32,7 +32,6 @@ class Droplet {
       float x3 = map(lifespan, 15, 0, (x - xOffset), x);
       float y3 = map(lifespan, 15, 0, (y - yOffset), y);
       pg.line( x3, y3, x, y);
-      //println("x: " + x + "\ty: " + y + "\txoff: " + xOffset + "\tyOff: " + yOffset + "\tx3: " + x3 + "\ty3: " + y3);
       float w = map(lifespan, int(lifespan * vtA), 0, 50, 150);
       pg.noFill();
       pg.ellipse(x, y, w, 10);

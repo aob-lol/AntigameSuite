@@ -5,13 +5,9 @@ class Letter {
   PFont font;
   String letter;
 
-  Letter(int x_, int y_, PFont font_) {
+  Letter(int x_, int y_, String letter_) {
     x = x_;
     y = y_;
-    font = font_;
-  }
-
-  void setLetter( String letter_ ) {
     letter = letter_;
   }
 
@@ -19,26 +15,17 @@ class Letter {
     pg_.textFont(font);
     pg_.text(letter, x, y);
   }
-
-  void setFont( PFont font_ ) {
-    font = font_;
-  }
-}
-
-class WordGrid {
-  
-  int x;
-  
 }
 
 class AntigameType2D extends Context {
 
-  PGraphics pg; // All graphics drawn to this buffer.
-  String name = "AntigameType2D";  // Drawn onscreen, make it count!
+  PGraphics pg;
+  String name = "AntigameAnxiety";
   PFont[] fontArray = new PFont[4];
   int fontIndex = 0;
   int width_ = width;
   int height_= height;
+  ArrayList<Letter> letters = new ArrayList<Letter>();
 
 
   AntigameType2D() {
@@ -50,14 +37,24 @@ class AntigameType2D extends Context {
   }
 
   void anim() {
-    // Stuff to do many times per second.
+    // animate letters
+    if (millis() % 150 == 0) {
+      //Add new letter
+      String allLetters = "a";
+      int randL = int(random(1));
+      String letter = allLetters[ randL ];
+      int randX = int(random(width_));
+      int randY = int(random(height_));
+      letters.add(new Letter(randX, randY, randL));
+    }
+    // Draw to canvas
     pg.beginDraw();
     pg.background(0);
-    pg.textFont(fontArray[fontIndex]);
+    pg.textFont(fontArray[int(random(4))]);
     pg.textAlign(CENTER);
-    pg.text("hello", width / 2, height / 2);
-    fontIndex++;
-    fontIndex%=fontArray.length;
+    for (Letter letter: letters) {
+     letter.render();
+    }
     pg.endDraw();
   }
 
